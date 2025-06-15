@@ -1,0 +1,808 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-dark: #1A2B3C; /* Deep Professional Blue/Charcoal */
+    --accent-gold: #FFC107; /* Vibrant Gold/Success Yellow */
+    --text-dark: #333333;
+    --bg-light: #F8F8F8;
+    --white: #FFFFFF;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section-padding {
+    padding: var(--spacing-lg) 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.bg-dark {
+    background-color: var(--primary-dark);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.accent-text {
+    color: var(--accent-gold);
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-dark);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: 3.5rem; margin-bottom: var(--spacing-md); }
+h2 { font-size: 2.8rem; margin-bottom: var(--spacing-md); }
+h3 { font-size: 1.8rem; margin-bottom: var(--spacing-sm); }
+p { margin-bottom: var(--spacing-sm); }
+
+.section-title {
+    font-size: 2.8rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent; /* For outline button consistency */
+}
+
+.btn-primary {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    border-color: var(--accent-gold);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--accent-gold), 10%); /* Pseudo-darken, use real value */
+    background-color: #e6b000; /* Slightly darker gold */
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--white); /* Default for hero, will be var(--primary-dark) for light sections */
+    border-color: var(--white); /* Default for hero */
+}
+
+/* Specific button style for light backgrounds if needed */
+.bg-light .btn-outline {
+    color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Header & Navigation (Flexbox) --- */
+.main-header {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav ul li {
+    margin-left: var(--spacing-md);
+}
+
+.main-nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--accent-gold);
+}
+
+.main-nav ul li .btn-primary {
+    margin-left: var(--spacing-sm); /* Adjust spacing for the contact button */
+}
+
+/* --- Hero Section (Flexbox) --- */
+.hero-section {
+    background: linear-gradient(rgba(26, 43, 60, 0.85), rgba(26, 43, 60, 0.2)), url('cover.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: var(--spacing-md);
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    color: var(--white);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.hero-buttons .btn {
+    margin: 0 var(--spacing-sm);
+}
+
+.hero-buttons .btn-outline {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.hero-buttons .btn-outline:hover {
+    background-color: var(--white);
+    color: var(--primary-dark);
+}
+
+/* --- Achievements Section (Grid) --- */
+#achievements {
+    background-color: var(--white); /* Ensure it's a clean white background */
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Flexible columns, at least 250px wide */
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.achievement-card {
+    background-color: var(--bg-light); /* Light gray background for cards */
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px; /* Give cards a consistent minimum height */
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px); /* More pronounced lift effect */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+    background-color: var(--white); /* White background on hover for contrast */
+}
+
+.achievement-icon {
+    font-size: 3.5rem; /* Large icon size */
+    margin-bottom: var(--spacing-sm);
+    display: block;
+    color: var(--accent-gold); /* Gold accent for impact */
+    /* Handled by .accent-text class in HTML, but defined here for clarity */
+}
+
+.achievement-number {
+    font-size: 3rem; /* Very large numbers for prominence */
+    font-weight: 700; /* Bold numbers */
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1; /* Tighter line height for large numbers */
+}
+
+.achievement-description {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 0; /* No bottom margin on last element in card */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Allow smaller cards */
+    }
+    .achievement-number {
+        font-size: 2.5rem; /* Slightly smaller numbers on mobile */
+    }
+    .achievement-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-grid {
+        grid-template-columns: 1fr; /* Stack into single column on very small screens */
+    }
+}
+
+/* --- Mission & Vision Section (Grid) --- */
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Two columns, flexible width */
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    align-items: start; /* Align cards at the top */
+}
+
+.mv-card {
+    background-color: var(--white);
+    padding: var(--spacing-lg); /* More padding for a substantial feel */
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Slightly more pronounced shadow */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ensure cards are same height even if content differs slightly */
+    display: flex; /* Use flexbox for content within card */
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to top within card */
+}
+
+.mv-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+.mv-icon {
+    font-size: 4rem; /* Larger icon size */
+    margin-bottom: var(--spacing-sm);
+    display: block; /* Ensure margin applies correctly */
+    /* Color handled by .accent-text class in HTML */
+}
+
+.mv-card h3 {
+    font-size: 2rem; /* Larger heading */
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.mv-card p {
+    font-size: 1.1rem; /* Slightly larger body text for readability */
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm); /* Default paragraph spacing */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .mission-vision-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+}
+
+
+
+/* --- About Us Section (Grid) --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Why Choose Us / Services (Grid) --- */
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.feature-card, .service-card {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover, .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.icon-lg {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+    display: block; /* Ensures margin works */
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-card h3, .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--primary-dark);
+}
+
+/* Existing CSS (no changes needed for layout/styling) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistent grid */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 43, 60, 0.9); /* Dark overlay */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ... (and other .portfolio-overlay, .view-project-btn styles) ... */
+
+/* --- Client Testimonials Section (Grid) --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background-color: var(--white);
+    color: var(--text-dark);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex; /* Use flexbox for internal alignment */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribute space */
+}
+
+.testimonial-card .client-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-sm);
+    border: 3px solid var(--accent-gold); /* A subtle accent border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card .rating {
+    color: var(--accent-gold); /* Gold stars for success */
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-card .rating i {
+    margin: 0 2px; /* Small space between stars */
+}
+
+.testimonial-card .quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+    flex-grow: 1; /* Allow quote to take up available space */
+}
+
+.testimonial-card .client-info {
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: 1rem;
+    margin-top: auto; /* Push client info to the bottom */
+}
+
+/* Responsive adjustments if needed, though grid will handle most */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+}
+
+/* --- Terms and Conditions (Basic Formatting) --- */
+.terms-content {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.terms-content h3 {
+    color: var(--primary-dark);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.6rem;
+}
+
+.terms-content ul {
+    list-style: disc;
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.terms-content ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* --- Contact Section (Grid & Flexbox for form elements) --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    align-items: start;
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-info .info-item i {
+    font-size: 1.5rem;
+    margin-right: var(--spacing-sm);
+    color: var(--accent-gold);
+}
+
+.contact-info .info-item p {
+    margin: 0;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block; /* Keep this for general buttons without icons */
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    border-color: var(--accent-gold);
+    /* NEW: Flexbox properties for icon alignment */
+    display: inline-flex; /* Change from inline-block to inline-flex */
+    align-items: center;
+    justify-content: center; /* Centers content if button is wider than text+icon */
+    gap: var(--spacing-xs); /* Space between icon and text */
+}
+
+.btn-primary:hover {
+    background-color: #e6b000; /* Slightly darker gold */
+    transform: translateY(-2px);
+}
+
+/* ... (rest of your button styles) ... */
+
+/* Add this specific rule for the Call Us Directly button for margin */
+.btn-call-direct {
+    margin-top: var(--spacing-md); /* Ensures spacing from social links */
+}
+
+/* You might want to adjust the general `mt-4` class if it's no longer needed elsewhere */
+/* (Currently mt-4 is 2rem, this new btn-call-direct specific class is 2rem) */
+/* You can remove .mt-4 from the HTML if you define the margin here. */
+
+.social-links {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--white);
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.contact-form {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3);
+}
+
+/* --- Footer (Flexbox) --- */
+.main-footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    text-align: center;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: 5px; /* For wrap alignment */
+}
+
+.footer-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-gold);
+}
+
+/* --- Utility Classes (Margin Top) --- */
+.mt-4 {
+    margin-top: var(--spacing-md);
+}
+
+/* --- Responsive Design (Media Queries) --- */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .main-nav ul {
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* Hide for mobile, would typically be a hamburger menu */
+    }
+
+    .header-content {
+        justify-content: center; /* Center logo if nav is hidden */
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .hero-buttons .btn {
+        width: 80%; /* Make buttons full width */
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+        text-align: center;
+    }
+
+    .about-image {
+        order: -1; /* Move image above text on mobile */
+    }
+
+    .grid-3-cols,
+    .portfolio-grid,
+    .testimonials-grid,
+    .contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* More flexible on smaller screens */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .main-header {
+        padding: 0.8rem 0;
+    }
+    .logo a {
+        font-size: 1.5rem;
+    }
+    .section-padding {
+        padding: var(--spacing-md) 0;
+    }
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    .portfolio-item img {
+        height: 200px;
+    }
+}
